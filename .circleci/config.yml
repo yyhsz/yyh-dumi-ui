@@ -41,7 +41,7 @@ jobs:
       - checkout
       - attach_workspace:
           at: .
-      - run: yarn test --coverage
+      - run: yarn test:coverage
       - store_test_results:
           path: test-results
   publish:
@@ -68,6 +68,6 @@ workflows:
             - build
           filters:
             tags:
-              only: /^[0-9]+(\.[0-9]+)*/
+              only: /^v[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
