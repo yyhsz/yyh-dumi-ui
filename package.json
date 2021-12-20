@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "react-ui-2",
+  "name": "yyhreact-ui2",
   "version": "0.0.1",
   "scripts": {
     "start": "dumi dev",
