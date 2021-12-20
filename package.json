@@ -1,7 +1,8 @@
 {
-  "private": true,
+  "private": false,
   "name": "yyhreact-ui2",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "files": ["/es"],
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
