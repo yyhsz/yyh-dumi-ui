@@ -15,25 +15,43 @@ import './index.less';
 const sc = classNameGenerator('modal');
 
 interface Props {
-  visible: boolean;
+  visible?: boolean | undefined;
+  mask?: boolean | undefined;
+  maskCloseAble?: boolean | undefined;
+  title?: React.ReactNode;
+  footer?: React.ReactNode;
 }
 
-const Modal: React.FC<Props> = ({ visible, children }) => {
+const Modal: React.FC<Props> = (props) => {
+  const {
+    visible,
+    mask = true,
+    children,
+    title = '提示',
+    footer = (
+      <div>
+        <button>确认</button>
+        <button>取消 </button>
+      </div>
+    ),
+  } = props;
+  console.log(footer, 'asdf');
   const content = (
     <div className={sc()}>
-      <div className={sc('mask')}></div>
+      {mask ? <div className={sc('mask')} onClick={() => {}}></div> : null}
       <div className={sc('content')}>
         <div className="icon">
           <svg className="yyh-icon" aria-hidden="true">
             <use xlinkHref="#icon-close"></use>
           </svg>
         </div>
-        <header>提示</header>
-        <main>123</main>
-        <footer>
-          <button>确认</button>
-          <button>取消 </button>
-        </footer>
+        {title === null || title === false ? null : (
+          <header>
+            <div>{title}</div>{' '}
+          </header>
+        )}
+        <main>{children}</main>
+        {footer === null || footer === false ? null : <footer>{footer}</footer>}
       </div>
     </div>
   );

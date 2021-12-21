@@ -12,7 +12,7 @@ import { Modal } from 'yyhreact-ui2';
 export default () => {
   return (
     <div>
-      <Modal visible={true}>
+      <Modal visible={true} title={'提阿斯蒂芬'}>
         <div>123</div>
       </Modal>
     </div>
