@@ -20,27 +20,37 @@ interface Props {
   maskCloseAble?: boolean | undefined;
   title?: React.ReactNode;
   footer?: React.ReactNode;
+  onOk?: (e: React.MouseEvent) => void;
+  onCancel?: (e: React.MouseEvent) => void;
 }
 
 const Modal: React.FC<Props> = (props) => {
   const {
     visible,
     mask = true,
+    maskCloseAble = true,
     children,
     title = '提示',
+    onOk = () => {},
+    onCancel = () => {},
     footer = (
       <div>
-        <button>确认</button>
-        <button>取消 </button>
+        <button onClick={onOk}>确认</button>
+        <button onClick={onCancel}>取消 </button>
       </div>
     ),
   } = props;
-  console.log(footer, 'asdf');
+  // console.log(footer, 'asdf');
   const content = (
     <div className={sc()}>
-      {mask ? <div className={sc('mask')} onClick={() => {}}></div> : null}
+      {mask ? (
+        <div
+          className={sc('mask')}
+          onClick={maskCloseAble === null || maskCloseAble === false ? () => {} : onCancel}
+        ></div>
+      ) : null}
       <div className={sc('content')}>
-        <div className="icon">
+        <div className="icon" onClick={onCancel}>
           <svg className="yyh-icon" aria-hidden="true">
             <use xlinkHref="#icon-close"></use>
           </svg>
