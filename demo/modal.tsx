@@ -12,7 +12,6 @@ import { Modal } from 'yyhreact-ui2';
 export default () => {
   return (
     <div>
-      123123
       <Modal visible={true}>
         <div>123</div>
       </Modal>

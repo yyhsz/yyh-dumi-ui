@@ -7,7 +7,12 @@
  * @FilePath: \react-ui-2\src\Dialog\index.tsx
  */
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { classNameGenerator } from '../tools';
+
 import './index.less';
+
+const sc = classNameGenerator('modal');
 
 interface Props {
   visible: boolean;
@@ -15,15 +20,25 @@ interface Props {
 
 const Modal: React.FC<Props> = ({ visible, children }) => {
   const content = (
-    <div className="yyh-modal">
-      <div className="yyh-modal-mask">mask</div>
-      <div className="yyh-modal-wrap">
-        <div className="yyh-modal-content">{children}</div>
+    <div className={sc()}>
+      <div className={sc('mask')}></div>
+      <div className={sc('content')}>
+        <div className="icon">
+          <svg className="yyh-icon" aria-hidden="true">
+            <use xlinkHref="#icon-close"></use>
+          </svg>
+        </div>
+        <header>提示</header>
+        <main>123</main>
+        <footer>
+          <button>确认</button>
+          <button>取消 </button>
+        </footer>
       </div>
     </div>
   );
 
-  return visible ? content : null;
+  return visible ? ReactDOM.createPortal(content, document.body) : null;
 };
 
 export default Modal;

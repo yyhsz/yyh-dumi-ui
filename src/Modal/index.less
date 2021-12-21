@@ -1,3 +1,47 @@
 .yyh-modal {
   border: 1px solid #000;
 }
+.yyh-modal {
+  &-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid #000;
+  }
+  &-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    // border: 1px solid #000;
+    min-width: 300px;
+    background: white;
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+
+    .icon {
+      // border: 1px solid #000;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 16px 24px;
+      cursor: pointer;
+    }
+    header {
+      padding: 16px 24px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    main {
+      min-height: 80px;
+      padding: 16px 24px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    footer {
+      padding: 8px 24px;
+    }
+  }
+}
