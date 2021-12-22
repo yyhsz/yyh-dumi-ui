@@ -39,4 +39,35 @@
 
 <code src="@demo/button.tsx" ></code>
 
-<code src="@demo/modal.tsx" ></code>
+```tsx
+import React, { useState } from 'react';
+import { Button } from 'yyhreact-ui2';
+
+export default () => {
+  const [size, setSize] = useState('default');
+
+  return (
+    <div>
+      <div>
+        <Button style={{ margin: 0 }} onClick={() => setSize('large')}>
+          Large
+        </Button>
+        <Button style={{ margin: 0 }} onClick={() => setSize('default')}>
+          Default
+        </Button>
+        <Button onClick={() => setSize('small')}>Small</Button>
+      </div>
+      <Button type="primary" size={size}>
+        Primary Button
+      </Button>
+      <Button size={size}>Default Button</Button>
+      <Button type="link" size={size}>
+        Link
+      </Button>
+      <Button type="text" size={size}>
+        Text
+      </Button>
+    </div>
+  );
+};
+```

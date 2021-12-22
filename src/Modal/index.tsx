@@ -29,7 +29,7 @@ interface Props {
 const Modal: React.FC<Props> = (props) => {
   const {
     visible,
-    className,
+    className = '',
     style,
     mask = true,
     maskCloseAble = true,
