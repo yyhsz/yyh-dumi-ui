@@ -1,3 +1,16 @@
 import React from 'react';
 
-export default ({ title }: { title: string }) => <h1>{title}</h1>;
+interface Props {}
+
+const Button: React.FC<Props> = (props) => {
+  const { children } = props;
+
+  return (
+    <button>
+      123123
+      <span>{children}</span>
+    </button>
+  );
+};
+
+export default Button;

@@ -9,5 +9,5 @@
 import './iconfont.js';
 import './index.less';
 
-export { default as Foo } from './Button';
+export { default as Button } from './Button';
 export { default as Modal } from './Modal';
