@@ -22,11 +22,15 @@ interface Props {
   footer?: React.ReactNode;
   onOk?: (e: React.MouseEvent) => void;
   onCancel?: (e: React.MouseEvent) => void;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 const Modal: React.FC<Props> = (props) => {
   const {
     visible,
+    className,
+    style,
     mask = true,
     maskCloseAble = true,
     children,
@@ -42,7 +46,7 @@ const Modal: React.FC<Props> = (props) => {
   } = props;
   // console.log(footer, 'asdf');
   const content = (
-    <div className={sc()}>
+    <div className={`${sc()} ${className}`} style={style}>
       {mask ? (
         <div
           className={sc('mask')}
