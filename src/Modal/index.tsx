@@ -9,6 +9,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { classNameGenerator } from '../tools';
+import { Button } from 'yyhreact-ui2';
 
 import './index.less';
 
@@ -39,8 +40,10 @@ const Modal: React.FC<Props> = (props) => {
     onCancel = () => {},
     footer = (
       <div>
-        <button onClick={onOk}>确认</button>
-        <button onClick={onCancel}>取消 </button>
+        <Button type="primary" onClick={onOk}>
+          确认
+        </Button>
+        <Button onClick={onCancel}>取消 </Button>
       </div>
     ),
   } = props;

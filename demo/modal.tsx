@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Modal } from 'yyhreact-ui2';
+import { Modal, Button } from 'yyhreact-ui2';
 
 export default () => {
   const [visible, setVisible] = useState(false);
 
   return (
     <div>
-      <button onClick={() => setVisible(true)}>click me！</button>
+      <Button type="primary" onClick={() => setVisible(true)}>
+        click me！
+      </Button>
       <Modal
         visible={visible}
         title="提阿斯蒂芬"
