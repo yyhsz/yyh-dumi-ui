@@ -18,3 +18,30 @@
 ## 代码演示
 
 <code src="@demo/modal.tsx" ></code>
+
+```tsx
+import React, { useState } from 'react';
+import { Modal, Button } from 'yyhreact-ui2';
+
+export default () => {
+  // const [visible, setVisible] = useState(false);
+  const showConfirm = () => {
+    Modal.confirm({
+      title: 'Do you Want to desdfgsdfgsdfgggggglete these items?',
+      content: 'Some descriptions',
+      onOk() {
+        console.log('OK');
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  };
+
+  return (
+    <div>
+      <Button onClick={showConfirm}>Confirm</Button>
+    </div>
+  );
+};
+```

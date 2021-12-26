@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-12-20 14:37:22
- * @LastEditTime: 2021-12-20 14:54:30
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: \react-ui-2\src\Dialog\index.tsx
- */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { classNameGenerator } from '../tools';
@@ -25,9 +17,25 @@ interface Props {
   onCancel?: (e: React.MouseEvent) => void;
   className?: string;
   style?: React.CSSProperties;
+  okText?: string;
+  cancelText?: string;
+  closable?: boolean;
+}
+interface ModalFuncProps {
+  mask?: boolean | undefined;
+  maskCloseAble?: boolean | undefined;
+  title?: React.ReactNode;
+  onOk?: (e: React.MouseEvent) => void;
+  onCancel?: (e: React.MouseEvent) => void;
+  okText?: string;
+  cancelText?: string;
+  content?: React.ReactNode;
+}
+interface ModalStaticFunctions {
+  confirm: (config: ModalFuncProps) => void;
 }
 
-const Modal: React.FC<Props> = (props) => {
+const Modal: React.FC<Props> & ModalStaticFunctions = (props) => {
   const {
     visible,
     className = '',
@@ -38,15 +46,19 @@ const Modal: React.FC<Props> = (props) => {
     title = '提示',
     onOk = () => {},
     onCancel = () => {},
+    okText = '确认',
+    cancelText = '取消',
+    closable = true,
     footer = (
       <div>
         <Button type="primary" onClick={onOk}>
-          确认
+          {okText}
         </Button>
-        <Button onClick={onCancel}>取消 </Button>
+        <Button onClick={onCancel}>{cancelText} </Button>
       </div>
     ),
   } = props;
+  console.log(children, 'chil');
   // console.log(footer, 'asdf');
   const content = (
     <div className={`${sc()} ${className}`} style={style}>
@@ -57,23 +69,65 @@ const Modal: React.FC<Props> = (props) => {
         ></div>
       ) : null}
       <div className={sc('content')}>
-        <div className="icon" onClick={onCancel}>
-          <svg className="yyh-icon" aria-hidden="true">
-            <use xlinkHref="#icon-close"></use>
-          </svg>
-        </div>
+        {closable ? (
+          <div className="icon" onClick={onCancel}>
+            <svg className="yyh-icon" aria-hidden="true">
+              <use xlinkHref="#icon-close"></use>
+            </svg>
+          </div>
+        ) : null}
         {title === null || title === false ? null : (
           <header>
             <div>{title}</div>{' '}
           </header>
         )}
-        <main>{children}</main>
+        <main>uuuuu{children}</main>
         {footer === null || footer === false ? null : <footer>{footer}</footer>}
       </div>
     </div>
   );
 
   return visible ? ReactDOM.createPortal(content, document.body) : null;
+};
+
+Modal.confirm = (config) => {
+  const {
+    mask = true,
+    maskCloseAble = true,
+    title,
+    content,
+    onOk,
+    onCancel,
+    okText,
+    cancelText,
+  } = config;
+
+  const tempDiv = document.createElement('div');
+  document.body.append(tempDiv);
+  const closeFoo = () => {
+    //不能在非函数组件内使用setState，所以不能用visible来控制modal
+    ReactDOM.unmountComponentAtNode(tempDiv);
+    tempDiv.remove();
+  };
+  const modalChildren = <div>123123{content}</div>;
+
+  const modal = (
+    <Modal
+      visible={true}
+      onOk={closeFoo}
+      onCancel={onCancel}
+      mask={mask}
+      maskCloseAble={maskCloseAble}
+      title={null}
+      okText={okText}
+      cancelText={cancelText}
+      closable={false}
+    >
+      {modalChildren}
+    </Modal>
+  );
+  ReactDOM.render(modal, tempDiv);
+  return;
 };
 
 export default Modal;

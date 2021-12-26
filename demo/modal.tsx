@@ -15,6 +15,7 @@ export default () => {
         // maskCloseAble={true}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
+        // footer={null}
       >
         <div>123</div>
       </Modal>
