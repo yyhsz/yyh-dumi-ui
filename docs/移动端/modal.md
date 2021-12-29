@@ -37,10 +37,41 @@ export default () => {
       },
     });
   };
+  const showDeleteConfirm = () => {
+    Modal.confirm({
+      title: 'Are you sure delete this task?',
+      content: 'Some descriptions',
+      onOk() {
+        console.log('OK');
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+      okText: 'Yes',
+      cancelText: 'No',
+    });
+  };
+  const showPropsConfirm = () => {
+    Modal.confirm({
+      title: 'Are you sure delete this task?',
+      content: 'Some descriptions',
+      mask: false,
+      onOk() {
+        console.log('OK');
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+      okText: 'Yes',
+      cancelText: 'No',
+    });
+  };
 
   return (
     <div>
       <Button onClick={showConfirm}>Confirm</Button>
+      <Button onClick={showDeleteConfirm}>Delete</Button>
+      <Button onClick={showPropsConfirm}>With extra props</Button>
     </div>
   );
 };
