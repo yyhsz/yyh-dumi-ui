@@ -27,7 +27,7 @@ export default () => {
   // const [visible, setVisible] = useState(false);
   const showConfirm = () => {
     Modal.confirm({
-      title: 'Do you Want to desdfgsdfgsdfgggggglete these items?',
+      title: 'Do you Want to delete these items?',
       content: 'Some descriptions',
       onOk() {
         console.log('OK');

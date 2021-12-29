@@ -51,10 +51,10 @@ const Modal: React.FC<Props> & ModalStaticFunctions = (props) => {
     closable = true,
     footer = (
       <div>
+        <Button onClick={onCancel}>{cancelText} </Button>
         <Button type="primary" onClick={onOk}>
           {okText}
         </Button>
-        <Button onClick={onCancel}>{cancelText} </Button>
       </div>
     ),
   } = props;
@@ -81,7 +81,7 @@ const Modal: React.FC<Props> & ModalStaticFunctions = (props) => {
             <div>{title}</div>{' '}
           </header>
         )}
-        <main>uuuuu{children}</main>
+        <main>{children}</main>
         {footer === null || footer === false ? null : <footer>{footer}</footer>}
       </div>
     </div>
@@ -96,10 +96,10 @@ Modal.confirm = (config) => {
     maskCloseAble = true,
     title,
     content,
-    onOk,
-    onCancel,
-    okText,
-    cancelText,
+    onOk = () => {},
+    onCancel = () => {},
+    okText = '确定',
+    cancelText = '取消',
   } = config;
 
   const tempDiv = document.createElement('div');
@@ -109,7 +109,31 @@ Modal.confirm = (config) => {
     ReactDOM.unmountComponentAtNode(tempDiv);
     tempDiv.remove();
   };
-  const modalChildren = <div>123123{content}</div>;
+  const modalChildren = (
+    <div className={sc('confirm')}>
+      <div className={sc('confirm-title')}>{title}</div>
+      <div className={sc('confirm-content')}>{content}</div>
+      <div className={sc('confirm-footer')}>
+        <Button
+          onClick={(e: React.MouseEvent) => {
+            onCancel(e);
+            closeFoo();
+          }}
+        >
+          {cancelText}
+        </Button>
+        <Button
+          type="primary"
+          onClick={(e: React.MouseEvent) => {
+            onOk(e);
+            closeFoo();
+          }}
+        >
+          {okText}
+        </Button>
+      </div>
+    </div>
+  );
 
   const modal = (
     <Modal
@@ -122,6 +146,7 @@ Modal.confirm = (config) => {
       okText={okText}
       cancelText={cancelText}
       closable={false}
+      footer={null}
     >
       {modalChildren}
     </Modal>
