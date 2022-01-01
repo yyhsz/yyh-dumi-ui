@@ -3,16 +3,17 @@ import { classNameGenerator } from '../tools';
 
 import './index.less';
 
-interface Props {
-  className?: string;
+interface BasicProps extends React.HTMLAttributes<HTMLDivElement> {
+  // prefixCls?: string;
+  hasSider?: boolean;
 }
 
 const sc = classNameGenerator('layout');
 
-const Layout: React.FC<Props> = (props) => {
+const Layout: React.FC<BasicProps> = (props) => {
   const { className = '' } = props;
 
-  return <div className={`${sc()} ${className}`}></div>;
+  return <section className={`${sc()} ${className}`}></section>;
 };
 
 export default Layout;
