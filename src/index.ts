@@ -1,3 +1,4 @@
+import { Layout } from 'D:/YYHportfolio/react-ui-2/node_modules/@umijs/preset-dumi/lib/theme/layout';
 /*
  * @Author: your name
  * @Date: 2021-12-20 10:01:08
@@ -11,3 +12,4 @@ import './index.less';
 
 export { default as Button } from './Button';
 export { default as Modal } from './Modal';
+export { default as Layout } from './Layout';

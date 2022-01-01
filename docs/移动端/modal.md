@@ -71,7 +71,7 @@ export default () => {
     <div>
       <Button onClick={showConfirm}>Confirm</Button>
       <Button onClick={showDeleteConfirm}>Delete</Button>
-      <Button onClick={showPropsConfirm}>With extra props</Button>
+      <Button onClick={showPropsConfirm}>With no mask</Button>
     </div>
   );
 };
