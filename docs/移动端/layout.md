@@ -33,14 +33,20 @@
 ```tsx
 import React, { useState } from 'react';
 import { Layout } from 'yyhreact-ui2';
+const { Header, Content, Footer } = Layout;
+// console.log(Header, 'Header');
 
 export default () => {
   // const [size, setSize] = useState('default');
 
   return (
-    <div>
-      <Layout></Layout>
-    </div>
+    <>
+      <Layout>
+        <Header></Header>
+        <Content></Content>
+        <Footer></Footer>
+      </Layout>
+    </>
   );
 };
 ```

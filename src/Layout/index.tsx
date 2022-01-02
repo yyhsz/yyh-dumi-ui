@@ -1,19 +1,17 @@
 import React from 'react';
-import { classNameGenerator } from '../tools';
+import InternalLayout, { Header, Content, Footer } from './layout';
 
-import './index.less';
-
-interface BasicProps extends React.HTMLAttributes<HTMLDivElement> {
-  // prefixCls?: string;
-  hasSider?: boolean;
+interface LayoutType extends React.FC<React.HTMLAttributes<HTMLDivElement>> {
+  Header: typeof Header;
+  Footer: typeof Footer;
+  Content: typeof Content;
+  // Sider: typeof ;
 }
 
-const sc = classNameGenerator('layout');
+const Layout = InternalLayout as LayoutType;
 
-const Layout: React.FC<BasicProps> = (props) => {
-  const { className = '' } = props;
-
-  return <section className={`${sc()} ${className}`}></section>;
-};
+Layout.Header = Header;
+Layout.Footer = Footer;
+Layout.Content = Content;
 
 export default Layout;

@@ -1,5 +1,23 @@
 .yyh-layout {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
   width: 100px;
   height: 100px;
   border: 1px solid #000;
+  &,
+  * {
+    box-sizing: border-box;
+  }
+  &-content {
+    flex: auto;
+  }
+  header,
+  footer,
+  main {
+    border: 1px solid #000;
+  }
 }
+// .yyh-layout-has-sider{
+
+// }
