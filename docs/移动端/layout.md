@@ -42,9 +42,9 @@ export default () => {
   return (
     <>
       <Layout>
-        <Header></Header>
-        <Content></Content>
-        <Footer></Footer>
+        <Header>Header</Header>
+        <Content>Content</Content>
+        <Footer>Footer</Footer>
       </Layout>
     </>
   );
