@@ -2,7 +2,7 @@
   display: flex;
   flex: auto;
   flex-direction: column;
-  width: 100px;
+  width: 600px;
   height: 100px;
   border: 1px solid #000;
   &,
@@ -11,13 +11,26 @@
   }
   &-content {
     flex: auto;
+    //flex:auto === flex:1 1 auto
   }
+  &-sider {
+    width: 200px;
+    border: 1px solid green !important;
+    transition: width 0.5s;
+  }
+  &-sider-collapsed {
+    // border: 1px solid green !important;
+    width: 80px;
+  }
+
   header,
   footer,
-  main {
-    border: 1px solid #000;
+  main,
+  aside {
+    // border: 1px solid #000;
   }
 }
-// .yyh-layout-has-sider{
-
-// }
+.yyh-layout-has-sider {
+  // border: 1px solid red;
+  flex-direction: row;
+}

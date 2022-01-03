@@ -32,18 +32,24 @@
 
 ```tsx
 import React, { useState } from 'react';
-import { Layout } from 'yyhreact-ui2';
-const { Header, Content, Footer } = Layout;
+import { Layout, Button } from 'yyhreact-ui2';
+const { Header, Content, Footer, Sider } = Layout;
 // console.log(Header, 'Header');
 
 export default () => {
-  // const [size, setSize] = useState('default');
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
     <>
       <Layout>
-        <Header>Header</Header>
-        <Content>Content</Content>
+        <Header>
+          <span style={{ marginRight: '20px' }}>Header</span>
+          <Button onClick={() => setCollapsed(!collapsed)}>click to toogle</Button>
+        </Header>
+        <Layout>
+          <Content>Content</Content>
+          <Sider collapsed={collapsed}>Sider</Sider>
+        </Layout>
         <Footer>Footer</Footer>
       </Layout>
     </>
