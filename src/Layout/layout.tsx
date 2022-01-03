@@ -28,23 +28,24 @@ type BasicProps = React.HTMLAttributes<HTMLDivElement>;
 //   );
 // };
 
-const Layout = (props: BasicProps) => {
-  const { className = '', children } = props;
-  const arrChildren = children as Array<ReactElement>;
-  console.log(arrChildren[0]?.type === Header);
+// const Layout = (props: BasicProps) => {
+//   const { className = '', children } = props;
+//   const arrChildren = children as Array<ReactElement>;
+//   console.log(arrChildren[0]?.type === Header);
 
-  return <section className={`${sc()} ${className}`}>{children}</section>;
-};
+//   return <section className={`${sc()} ${className}`}>{children}</section>;
+// };
 
 interface generatorProps {
-  tagName: string;
+  tagName: 'header' | 'footer' | 'main' | 'section';
+  suffixCls: string;
 }
-const generator = ({ tagName }: generatorProps) => {
+const generator = ({ tagName, suffixCls }: generatorProps) => {
   return (props: BasicProps) => {
     const { className = '', children, ...rest } = props;
     const arrChildren = children as Array<ReactElement>;
     //if  children has sider, className add: -has-sider
-    const clsStr = `${sc(tagName)} ${className} ${
+    const clsStr = `${sc(tagName === 'section' ? '' : suffixCls)} ${className} ${
       tagName === 'section' &&
       arrChildren?.length > 0 &&
       arrChildren?.find((ele) => ele === <div />)
@@ -62,9 +63,10 @@ const generator = ({ tagName }: generatorProps) => {
     );
   };
 };
-const Header = generator({ tagName: 'header' });
-const Content = generator({ tagName: 'main' });
-const Footer = generator({ tagName: 'footer' });
+const Header = generator({ tagName: 'header', suffixCls: 'header' });
+const Content = generator({ tagName: 'main', suffixCls: 'content' });
+const Footer = generator({ tagName: 'footer', suffixCls: 'footer' });
+const Layout = generator({ tagName: 'section', suffixCls: 'layout' });
 
 export { Header, Footer, Content };
 

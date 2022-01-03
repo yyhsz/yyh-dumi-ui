@@ -1,14 +1,13 @@
-import React from 'react';
 import InternalLayout, { Header, Content, Footer } from './layout';
-
-interface LayoutType extends React.FC<React.HTMLAttributes<HTMLDivElement>> {
+// extends React.FC<React.HTMLAttributes<HTMLDivElement>>
+interface LayoutType {
   Header: typeof Header;
   Footer: typeof Footer;
   Content: typeof Content;
   // Sider: typeof ;
 }
 
-const Layout = InternalLayout as LayoutType;
+const Layout = InternalLayout as typeof InternalLayout & LayoutType;
 
 Layout.Header = Header;
 Layout.Footer = Footer;
