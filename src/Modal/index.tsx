@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { classNameGenerator } from '../tools';
-import { Button } from 'yyhreact-ui2';
+import { Button } from '../index';
 
 import './index.less';
 
