@@ -18,9 +18,10 @@ const classNameGenerator = (prefix: string) => {
       .flat();
     //without flat: ['header',['content','sider']] use flat:['header','content','sider']
 
-    return suffixArr.map((suffix) => (suffix ? `${str}-${suffix}` : str)).join(' ');
-
-    // return ['yyh', prefix, suffix].filter(Boolean).join('-');
+    return suffixArr.length === 0
+      ? str
+      : suffixArr.map((suffix) => (suffix ? `${str}-${suffix}` : str)).join(' ');
+    //sc() --> 'yyh-prefix'
   };
 };
 

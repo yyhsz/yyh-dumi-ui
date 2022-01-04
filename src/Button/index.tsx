@@ -26,16 +26,18 @@ const Button: React.FC<Props> = (props) => {
     size = 'default',
     disabled = false,
   } = props;
-  const btnType = `${sc(typeArr.find((v) => v === type) ? type : '')} ${sc('base')}`;
-  const btnSize = `${sc(sizeArr.find((v) => v === size) ? size : 'default')}`;
+  // const btnType = `${sc(typeArr.find((v) => v === type) ? type : '')} ${sc('base')}`;
+  // const btnSize = `${sc(sizeArr.find((v) => v === size) ? size : 'default')}`;
+  const btnTypeCls = sc('base', { [`${type}`]: !!typeArr.find((v) => v === type) });
+  const btnSizeCls = sc('content', { [`${size}`]: !!sizeArr.find((v) => v === size) });
   return (
     <button
       disabled={disabled}
-      className={`${btnType} ${className} `}
+      className={`${btnTypeCls} ${className} `}
       style={style}
       onClick={onClick}
     >
-      <span className={`${sc('content')} ${btnSize}`}>{children}</span>
+      <span className={`${btnSizeCls}`}>{children}</span>
     </button>
   );
 };
